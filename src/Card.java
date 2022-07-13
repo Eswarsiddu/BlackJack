@@ -3,6 +3,8 @@ public class Card {
     private final SYMBOL symbol;
     private final String number;
 
+    public boolean faceDown = true;
+
     public Card(SYMBOL symbol, String number){
         this.symbol = symbol;
         this.number = number;
@@ -10,7 +12,12 @@ public class Card {
     }
 
     public String displayCard(){
-        return "( Symbol : "+ this.symbol + ", number : "+ this.number+" )";
+        if(faceDown){
+            return "( Symbol : *, number : * )";
+        }
+        else {
+            return "( Symbol : " + this.symbol + ", number : " + this.number + " )";
+        }
     }
 
     public int getValue(){
