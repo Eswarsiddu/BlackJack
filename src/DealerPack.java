@@ -1,7 +1,12 @@
 import java.util.List;
 
 public class DealerPack extends Pack{
-    private boolean first_card = true;
+    private boolean first_card;
+
+    public DealerPack(){
+        super();
+        first_card = true;
+    }
 
     protected void checkWinStatus() {
         if (total1 > 21) {
@@ -19,27 +24,30 @@ public class DealerPack extends Pack{
         }
     }
 
+    @Override
     public void resetDeck(List<Card> finished_deck){
         first_card = true;
         super.resetDeck(finished_deck);
     }
 
+    @Override
     public void addCard(Card card){
         if(first_card){
-            card.faceDown = true;
+            card.faceDown();
             first_card = false;
         }
         else{
-            card.faceDown = false;
+            card.faceUp();
         }
         super.addCard(card);
     }
 
     public void playerStayed(){
-        cards.get(0).faceDown = false;
+        cards.get(0).faceUp();
         calculateTotal();
     }
 
+    @Override
     public void displayPack(){ // TODO: This is only for java output
         System.out.println("Dealer");
         super.displayPack();

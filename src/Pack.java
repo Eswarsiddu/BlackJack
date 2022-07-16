@@ -35,7 +35,7 @@ public abstract class Pack {
         int no_of_A = 0;
         int total = 0;
         for(Card card : cards){
-            if(card.faceDown){
+            if(card.isFaceDown()){
                 continue;
             }
             total += card.getValue();

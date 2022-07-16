@@ -17,5 +17,4 @@ enum WIN_STATUS {
     NONE,
     PUSH,
     WIN
-
 }
