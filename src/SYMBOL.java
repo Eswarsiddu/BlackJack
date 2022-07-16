@@ -10,7 +10,7 @@ enum STATE {
     STAYED
 }
 
-enum WINSTATUS {
+enum WIN_STATUS {
     BLACKJACK,
     BUST,
     LOSE,

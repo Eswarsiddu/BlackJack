@@ -1,42 +1,38 @@
 import java.util.List;
 
-public class DealerPack extends PlayerPack{
-    private boolean firstcard = true;
+public class DealerPack extends Pack{
+    private boolean first_card = true;
 
     protected void checkWinStatus() {
         if (total1 > 21) {
-            finalvalue = total1;
+            final_value = total1;
         } else if (total1 == 21 || total2 == 21) {
-            finalvalue = total1;
+            final_value = 21;
         }
         else{
             if(total2>21){
-                finalvalue = total1;
+                final_value = total1;
             }
             else{
-                finalvalue = total2;
+                final_value = total2;
             }
         }
     }
 
-    public void resetDeck(List<Card> finisheddeck){
-        total1 = 0;
-        total2 = 0;
-        finisheddeck.addAll(cards);
-        cards.clear();
-        firstcard = true;
+    public void resetDeck(List<Card> finished_deck){
+        first_card = true;
+        super.resetDeck(finished_deck);
     }
 
     public void addCard(Card card){
-        if(firstcard){
+        if(first_card){
             card.faceDown = true;
-            firstcard = false;
+            first_card = false;
         }
         else{
             card.faceDown = false;
         }
-        cards.add(card);
-        calculateTotal();
+        super.addCard(card);
     }
 
     public void playerStayed(){
@@ -46,10 +42,6 @@ public class DealerPack extends PlayerPack{
 
     public void displayPack(){ // TODO: This is only for java output
         System.out.println("Dealer");
-        for(Card card : this.cards){
-            System.out.print(card.displayCard()+", ");
-        }
-        System.out.println("total:"+total1+", total2:"+total2);
-        System.out.println("--------------------");
+        super.displayPack();
     }
 }
