@@ -93,6 +93,8 @@ public class MainProgram {
         switch (player_pack.getWinStatus()){
             case WIN:
                 System.out.println("WIN"); break;
+            case BLACKJACK:
+                System.out.println("BLACKJACK"); break;
             case BUST:
                 System.out.println("BUST");break;
             case PUSH:
@@ -104,10 +106,7 @@ public class MainProgram {
 
     private void checkWinStatus(){
         WIN_STATUS player_status = player_pack.getWinStatus();
-        if(player_status == WIN_STATUS.BLACKJACK){
-            playDealer();
-        }
-        else if(player_status == WIN_STATUS.BUST){
+        if(player_status == WIN_STATUS.BLACKJACK || player_status == WIN_STATUS.BUST){
             dealEnd();
         }
     }
